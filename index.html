@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Pilih Warna</div>
+        <div class="box">
+            <div class="circle red"></div>
+            <div class="circle green"></div>
+            <div class="circle blue"></div>
+            <div class="circle black"></div>
+            <div class="circle pink"></div>
+            <div class="circle yellow"></div>
+        </div>
+        <div class="resetContainer">
+            <div class="circle resetButton"><h3>RESET</h3></div>
+        </div>
+    </div>
+
+
+    <script>
+        const circles = document.querySelectorAll(".circle");
+        const title = document.querySelector(".title");
+
+        circles.forEach(circle => {
+            circle.addEventListener("click", ({target}) => {
+                const {backgroundColor} = window.getComputedStyle(target);
+                document.body.style.backgroundColor = backgroundColor;
+
+                // Cek jika circle memiliki kelas 'black'
+                if (target.classList.contains("black")) {
+                    title.style.color = "white";
+                } else {
+                    title.style.color = ""; // Mengembalikan ke warna asli (default)
+                }
+            });
+        });
+    </script>
+</body>
+</html>
